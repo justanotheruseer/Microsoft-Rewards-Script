@@ -3,7 +3,7 @@ steps:
     image: woodpeckerci/plugin-kaniko
     settings:
       registry: 192.168.1.20:5000
-      repo: 192.168.1.20:5000/refarmer-v2
+      repo: refarmer-v2
       tags:
         - latest
       skip_tls_verify: true

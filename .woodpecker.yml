@@ -1,10 +1,12 @@
 steps:
-  build:
-    image: docker:dind
+  build-and-push:
+    image: woodpeckerci/plugin-docker-buildx
     privileged: true
-    commands:
-      - docker build -t 192.168.1.20:5000/refarmer-v2:latest .
-      - docker push 192.168.1.20:5000/refarmer-v2:latest
+    settings:
+      repo: 192.168.1.20:5000/refarmer-v2
+      tags: latest
+      registry: 192.168.1.20:5000
+      insecure: true  # for local registry without TLS
     when:
-      branch: main
-      event: push
+      branch: v3
+      event: v3

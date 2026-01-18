@@ -4,12 +4,6 @@ set -euo pipefail
 # Ensure Playwright uses preinstalled browsers
 export PLAYWRIGHT_BROWSERS_PATH=0
 
-# 1. Timezone: default to UTC if not provided
-: "${TZ:=UTC}"
-ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime
-echo "$TZ" > /etc/timezone
-dpkg-reconfigure -f noninteractive tzdata
-
 # 2. Validate CRON_SCHEDULE
 if [ -z "${CRON_SCHEDULE:-}" ]; then
   echo "ERROR: CRON_SCHEDULE environment variable is not set." >&2

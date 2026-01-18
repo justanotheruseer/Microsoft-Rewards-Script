@@ -1,10 +1,9 @@
 steps:
   build-and-push:
-    image: gcr.io/kaniko-project/executor:latest
-    commands:
-      - /kaniko/executor 
-        --context=/woodpecker/src
-        --dockerfile=Dockerfile
-        --destination=192.168.1.20:5000/refarmer-v2:latest
-        --insecure
-        --skip-tls-verify
+    image: woodpeckerci/plugin-kaniko
+    settings:
+      registry: 192.168.1.20:5000
+      repo: 192.168.1.20:5000/refarmer-v2
+      tags:
+        - latest
+      skip_tls_verify: true

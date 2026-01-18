@@ -1,12 +1,14 @@
 steps:
-  build-and-push:
-    image: woodpeckerci/plugin-docker-buildx
+  test:
+    image: alpine
+    commands:
+      - echo "Step is running!"
+      - ls -la
+      
+  build:
+    image: docker:dind
     privileged: true
-    settings:
-      repo: 192.168.1.20:5000/refarmer-v2
-      tags: latest
-      registry: 192.168.1.20:5000
-      insecure: true  # for local registry without TLS
-    when:
-      branch: v3
-      event: v3
+    commands:
+      - docker info
+      - docker build -t 192.168.1.20:5000/refarmer-v2:latest .
+      - docker push 192.168.1.20:5000/refarmer-v2:latest

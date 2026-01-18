@@ -57,8 +57,7 @@ export class Login {
         totpInputOld: 'form[name="OneTimeCodeViewForm"]',
         identityBanner: '[data-testid="identityBanner"]',
         viewFooter: '[data-testid="viewFooter"] >> [role="button"]',
-        otherWaysToSignIn:
-            'span[role="button"]:has-text("Other ways to sign in"), span[role="button"]:has-text("other ways")',
+        otherWaysToSignIn: '[data-testid="viewFooter"] span[role="button"]',
         otpCodeEntry: '[data-testid="codeEntry"]',
         backButton: '#back-button',
         bingProfile: '#id_n',

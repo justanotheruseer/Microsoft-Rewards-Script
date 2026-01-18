@@ -1,11 +1,11 @@
 steps:
   build-and-push:
-    image: woodpeckerci/plugin-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
+      registry: 192.168.1.20:5000
       repo: 192.168.1.20:5000/refarmer-v2
       tags:
         - latest
-      registry: http://192.168.1.20:5000 
       insecure: true
-      push: true
+      daemon_off: false
